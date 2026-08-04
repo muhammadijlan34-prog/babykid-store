@@ -278,3 +278,60 @@ footer img{
 footer p{
     margin:8px 0;
 }
+/* ===========================
+   Categories
+=========================== */
+
+.categories{
+    padding:80px 8%;
+    background:#ffffff;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:34px;
+    color:#1F2A37;
+}
+
+.section-title p{
+    margin-top:10px;
+    color:#666;
+    font-size:16px;
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.category-card{
+    background:#ffffff;
+    border-radius:25px;
+    padding:35px 25px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.category-card:hover{
+    transform:translateY(-8px);
+}
+
+.category-card .icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.category-card h3{
+    color:#1F2A37;
+    margin-bottom:10px;
+}
+
+.category-card p{
+    color:#777;
+}
