@@ -416,3 +416,60 @@ footer p{
     background:#FFC8A0;
     color:#1F2A37;
 }
+/* ===========================
+   Offer Banner
+=========================== */
+
+.offer-banner{
+    background:#1F2A37;
+    color:#ffffff;
+    margin:80px 8%;
+    border-radius:30px;
+    padding:60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+}
+
+.offer-text{
+    max-width:500px;
+}
+
+.offer-tag{
+    display:inline-block;
+    background:#FFC8A0;
+    color:#1F2A37;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.offer-text h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.offer-text p{
+    color:#ddd;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.offer-btn{
+    background:#A7C7E7;
+    color:#1F2A37;
+    border:none;
+    padding:15px 35px;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.offer-image img{
+    width:420px;
+    max-width:100%;
+}
