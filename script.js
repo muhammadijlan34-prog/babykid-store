@@ -38,3 +38,29 @@ topBtn.onclick=()=>{
     });
 
 };
+// ===============================
+// WhatsApp Order
+// ===============================
+
+function orderProduct(productName, price){
+
+    const phone = "91XXXXXXXXXX";
+
+    const message = `Hello Baby Kid,
+
+I want to order this product.
+
+Product : ${productName}
+
+Price : ₹${price}
+
+Please share more details.
+
+Thank you.`;
+
+    const url =
+`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    window.open(url,"_blank");
+
+}
