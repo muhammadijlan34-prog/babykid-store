@@ -603,3 +603,116 @@ section{
     }
 
 }
+/* ===================================================
+   Part 5 - Categories
+=================================================== */
+
+.categories{
+
+    background:var(--white);
+
+}
+
+.category-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+.category-card{
+
+    background:var(--white);
+
+    border-radius:25px;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+    border:2px solid transparent;
+
+}
+
+.category-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:var(--primary);
+
+}
+
+.category-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    background:var(--light);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:42px;
+
+}
+
+.category-card h3{
+
+    color:var(--dark);
+
+    margin-bottom:12px;
+
+    font-size:22px;
+
+}
+
+.category-card p{
+
+    color:var(--text);
+
+    font-size:15px;
+
+    line-height:1.6;
+
+}
+
+.category-btn{
+
+    margin-top:20px;
+
+    background:var(--primary);
+
+    color:var(--dark);
+
+    padding:12px 25px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+    display:inline-block;
+
+    transition:var(--transition);
+
+}
+
+.category-btn:hover{
+
+    background:var(--secondary);
+
+}
