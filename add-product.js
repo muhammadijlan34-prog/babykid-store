@@ -63,3 +63,52 @@ const productDescription = document.getElementById("productDescription");
 const productImage = document.getElementById("productImage");
 
 const saveButton = document.getElementById("saveProduct");
+// ==========================================
+// Upload Image to Cloudinary
+// ==========================================
+
+async function uploadImage(file) {
+
+    const formData = new FormData();
+
+    formData.append("file", file);
+    formData.append("upload_preset", UPLOAD_PRESET);
+
+    const response = await fetch(
+
+        `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+
+        {
+
+            method: "POST",
+
+            body: formData
+
+        }
+
+    );
+
+    const data = await response.json();
+
+    return data.secure_url;
+
+}
+saveButton.addEventListener("click", async () => {
+
+    if (productImage.files.length === 0) {
+
+        alert("Please select an image.");
+
+        return;
+
+    }
+
+    saveButton.innerText = "Uploading...";
+
+    const imageUrl = await uploadImage(productImage.files[0]);
+
+    console.log(imageUrl);
+
+    saveButton.innerText = "Save Product";
+
+});
