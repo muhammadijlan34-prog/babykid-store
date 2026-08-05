@@ -1,0 +1,287 @@
+/* ===================================================
+   BABY KID WEBSITE
+   Version 2.0
+   Part 1 - Foundation
+=================================================== */
+
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Root Colors */
+
+:root{
+
+    --primary:#A7C7E7;
+    --secondary:#FFC8A0;
+
+    --dark:#1F2A37;
+    --white:#ffffff;
+
+    --text:#444444;
+    --light:#F8FBFF;
+
+    --shadow:0 8px 20px rgba(0,0,0,.08);
+
+    --radius:18px;
+
+    --transition:.3s ease;
+
+}
+
+/* Body */
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:var(--white);
+
+    color:var(--dark);
+
+    overflow-x:hidden;
+
+}
+
+/* Images */
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+/* Links */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+/* Buttons */
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    transition:var(--transition);
+
+}
+
+/* Inputs */
+
+input{
+
+    outline:none;
+
+    border:none;
+
+    font-size:15px;
+
+}
+
+/* Sections */
+
+section{
+
+    padding:80px 8%;
+
+}
+
+/* Container */
+
+.container{
+
+    width:100%;
+
+    max-width:1300px;
+
+    margin:auto;
+
+}
+
+/* Titles */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:50px;
+
+}
+
+.section-title h2{
+
+    font-size:38px;
+
+    color:var(--dark);
+
+    margin-bottom:10px;
+
+}
+
+.section-title p{
+
+    color:var(--text);
+
+    font-size:16px;
+
+}
+
+/* Utility */
+
+.hidden{
+
+    display:none;
+
+}
+
+.center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+/* ===================================================
+   Part 2 - Splash Screen
+=================================================== */
+
+#splash-screen{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100vh;
+
+    background:var(--white);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    z-index:9999;
+
+    transition:opacity .6s ease;
+
+}
+
+/* Logo */
+
+.splash-logo{
+
+    width:180px;
+
+    opacity:0;
+
+    animation:logoFade 2s ease forwards;
+
+}
+
+/* Loading Text */
+
+.loading-text{
+
+    margin-top:20px;
+
+    color:var(--dark);
+
+    font-size:15px;
+
+    letter-spacing:2px;
+
+    animation:blink 1s infinite;
+
+}
+
+/* Hide Main */
+
+#main-content{
+
+    display:none;
+
+}
+
+/* ==========================
+   Animations
+========================== */
+
+@keyframes logoFade{
+
+    0%{
+
+        opacity:0;
+
+        transform:scale(.7);
+
+    }
+
+    30%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+    70%{
+
+        opacity:1;
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:scale(1.1);
+
+    }
+
+}
+
+@keyframes blink{
+
+    0%{
+
+        opacity:.3;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:.3;
+
+    }
+
+}
