@@ -1,11 +1,11 @@
- window.onload = function () {
+window.addEventListener("load",()=>{
 
-    setTimeout(function () {
+    setTimeout(()=>{
 
-        document.getElementById("splash-screen").style.display = "none";
+        document.getElementById("splash-screen").style.display="none";
 
-        document.getElementById("main-content").style.display = "block";
+        document.getElementById("main-content").style.display="block";
 
-    }, 2000);
+    },2000);
 
-};
+});
