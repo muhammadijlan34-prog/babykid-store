@@ -1129,3 +1129,72 @@ section{
     line-height:1.7;
 
 }
+/* ===================================================
+   Part 9 - Customer Reviews
+=================================================== */
+
+.testimonials{
+
+    background:var(--light);
+
+}
+
+.testimonial-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.testimonial-card{
+
+    background:var(--white);
+
+    padding:30px;
+
+    border-radius:25px;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.testimonial-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.stars{
+
+    color:#FFD700;
+
+    font-size:22px;
+
+    margin-bottom:18px;
+
+}
+
+.review{
+
+    color:var(--text);
+
+    line-height:1.8;
+
+    margin-bottom:20px;
+
+    font-style:italic;
+
+}
+
+.testimonial-card h4{
+
+    color:var(--dark);
+
+    font-size:16px;
+
+}
