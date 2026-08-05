@@ -95,20 +95,49 @@ async function uploadImage(file) {
 }
 saveButton.addEventListener("click", async () => {
 
-    if (productImage.files.length === 0) {
+    if (
+        productName.value === "" ||
+        productPrice.value === "" ||
+        productImage.files.length === 0
+    ) {
 
-        alert("Please select an image.");
+        alert("Please fill all required fields.");
 
         return;
-
     }
 
     saveButton.innerText = "Uploading...";
 
-    const imageUrl = await uploadImage(productImage.files[0]);
+    try {
 
-    console.log(imageUrl);
+        const imageUrl = await uploadImage(productImage.files[0]);
 
-    saveButton.innerText = "Save Product";
+        await addDoc(collection(db, "products"), {
+
+            name: productName.value,
+
+            price: productPrice.value,
+
+            category: productCategory.value,
+
+            description: productDescription.value,
+
+            image: imageUrl,
+
+            createdAt: new Date()
+
+        });
+
+        alert("Product Added Successfully!");
+
+        window.location.href = "dashboard.html";
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Failed to save product.");
+
+    }
 
 });
