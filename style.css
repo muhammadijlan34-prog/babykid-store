@@ -905,3 +905,148 @@ section{
     font-size:20px;
 
 }
+/* ===================================================
+   Part 7 - Premium Offer Banner
+=================================================== */
+
+.offer-banner{
+
+    padding:90px 8%;
+
+    background:linear-gradient(135deg,#1F2A37,#2F4156);
+
+    color:#fff;
+
+}
+
+.offer-container{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:60px;
+
+}
+
+.offer-content{
+
+    flex:1;
+
+}
+
+.offer-tag{
+
+    display:inline-block;
+
+    background:var(--secondary);
+
+    color:var(--dark);
+
+    padding:10px 20px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+    margin-bottom:25px;
+
+}
+
+.offer-content h2{
+
+    font-size:55px;
+
+    margin-bottom:20px;
+
+}
+
+.offer-content p{
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+    color:#e8e8e8;
+
+}
+
+.offer-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+.offer-btn{
+
+    background:var(--primary);
+
+    color:var(--dark);
+
+    padding:15px 30px;
+
+    border-radius:40px;
+
+    font-weight:bold;
+
+}
+
+.offer-btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.offer-btn-outline{
+
+    background:transparent;
+
+    color:#fff;
+
+    border:2px solid #fff;
+
+    padding:15px 30px;
+
+    border-radius:40px;
+
+    font-weight:bold;
+
+}
+
+.offer-btn-outline:hover{
+
+    background:#fff;
+
+    color:var(--dark);
+
+}
+
+.offer-image{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.offer-image img{
+
+    width:100%;
+
+    max-width:450px;
+
+    border-radius:25px;
+
+    box-shadow:var(--shadow);
+
+}
