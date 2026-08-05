@@ -716,3 +716,192 @@ section{
     background:var(--secondary);
 
 }
+/* ===================================================
+   Part 6 - Featured Products
+=================================================== */
+
+.featured-products{
+
+    background:var(--light);
+
+}
+
+.product-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.product-card{
+
+    background:var(--white);
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+    position:relative;
+
+}
+
+.product-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.product-card img{
+
+    width:100%;
+
+    height:320px;
+
+    object-fit:cover;
+
+}
+
+.product-info{
+
+    padding:20px;
+
+}
+
+.product-info h3{
+
+    margin-bottom:10px;
+
+    color:var(--dark);
+
+}
+
+.rating{
+
+    color:#f4b400;
+
+    margin-bottom:15px;
+
+}
+
+.price-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:18px;
+
+}
+
+.old-price{
+
+    color:#999;
+
+    text-decoration:line-through;
+
+}
+
+.price{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:var(--dark);
+
+}
+
+.product-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.view-btn{
+
+    flex:1;
+
+    background:var(--primary);
+
+    color:var(--dark);
+
+    padding:12px;
+
+    border-radius:14px;
+
+}
+
+.order-btn{
+
+    flex:1;
+
+    background:#25D366;
+
+    color:#fff;
+
+    padding:12px;
+
+    border-radius:14px;
+
+}
+
+.product-badge{
+
+    position:absolute;
+
+    top:15px;
+
+    left:15px;
+
+    background:#ff4d4d;
+
+    color:#fff;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+}
+
+.sale{
+
+    background:#ff9800;
+
+}
+
+.wishlist-btn{
+
+    position:absolute;
+
+    top:15px;
+
+    right:15px;
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    box-shadow:var(--shadow);
+
+    font-size:20px;
+
+}
