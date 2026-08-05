@@ -35,6 +35,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 // Check Login
 
@@ -74,3 +75,56 @@ document
     window.location.href="add-product.html";
 
 });
+// ===========================
+// Load Products
+// ===========================
+
+async function loadProducts(){
+
+    const productsList = document.getElementById("productsList");
+
+    productsList.innerHTML = "";
+
+    const querySnapshot = await getDocs(collection(db,"products"));
+
+    querySnapshot.forEach((doc)=>{
+
+        const product = doc.data();
+
+        productsList.innerHTML += `
+
+        <div class="product-item">
+
+            <img src="${product.image}" alt="Product">
+
+            <h3>${product.name}</h3>
+
+            <p>₹${product.price}</p>
+
+            <p>${product.category}</p>
+
+            <div class="action-buttons">
+
+                <button class="edit-btn">
+
+                    Edit
+
+                </button>
+
+                <button class="delete-btn">
+
+                    Delete
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+loadProducts();
