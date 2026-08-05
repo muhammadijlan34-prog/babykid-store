@@ -1303,3 +1303,131 @@ section{
     font-size:14px;
 
 }
+/* ===================================================
+   Part 11 - Responsive Design
+=================================================== */
+
+/* ---------- Tablet ---------- */
+
+@media (max-width:992px){
+
+    .hero,
+    .offer-container{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .hero-buttons,
+    .offer-buttons{
+
+        justify-content:center;
+
+    }
+
+    .search-box{
+
+        margin:15px 0;
+
+        width:100%;
+
+    }
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:768px){
+
+    .header{
+
+        padding:15px;
+
+        flex-wrap:wrap;
+
+    }
+
+    .logo img{
+
+        width:55px;
+
+    }
+
+    .search-box{
+
+        order:3;
+
+        width:100%;
+
+        margin-top:15px;
+
+    }
+
+    .hero{
+
+        padding:60px 20px;
+
+    }
+
+    .hero-text h1{
+
+        font-size:36px;
+
+    }
+
+    .hero-text p{
+
+        font-size:16px;
+
+    }
+
+    .section-title h2{
+
+        font-size:30px;
+
+    }
+
+    .offer-content h2{
+
+        font-size:38px;
+
+    }
+
+    .footer-bottom{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+}
+
+/* ---------- Small Mobile ---------- */
+
+@media (max-width:480px){
+
+    section{
+
+        padding:60px 18px;
+
+    }
+
+    .hero-text h1{
+
+        font-size:30px;
+
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .offer-btn,
+    .offer-btn-outline{
+
+        width:100%;
+
+    }
+
+}
