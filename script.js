@@ -44,7 +44,7 @@ topBtn.onclick=()=>{
 
 function orderProduct(productName, price){
 
-    const phone = "91XXXXXXXXXX";
+    const phone = "917994189453";
 
     const message = `Hello Baby Kid,
 
