@@ -1,0 +1,20 @@
+{
+  "name": "Baby Kid",
+  "short_name": "Baby Kid",
+  "description": "Baby Kid - Trending kids fashion and collections in Aikarappadi, Kondotty, Malappuram, Kerala.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#171329",
+  "orientation": "portrait-primary",
+  "scope": "./",
+
+  "icons": [
+    {
+      "src": "assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
