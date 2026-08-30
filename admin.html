@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Baby Kid Admin Panel">
+
+    <title>Baby Kid | Admin</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <div class="admin-page">
+
+        <header class="admin-header">
+            <div>
+                <h1>Baby Kid</h1>
+                <p>Admin Panel</p>
+            </div>
+
+            <button
+                type="button"
+                id="logout-btn"
+                class="logout-btn"
+            >
+                Logout
+            </button>
+        </header>
+
+
+        <main class="admin-container">
+
+            <section class="admin-welcome">
+                <span>ADMIN</span>
+
+                <h2>
+                    Manage Your Store
+                </h2>
+
+                <p>
+                    Add products, manage your collection
+                    and update Baby Kid easily.
+                </p>
+            </section>
+
+
+            <section class="admin-grid">
+
+                <a
+                    href="dashboard.html"
+                    class="admin-card"
+                >
+                    <div class="admin-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Dashboard
+                    </h3>
+
+                    <p>
+                        View and manage your store
+                        products.
+                    </p>
+
+                    <span>
+                        Open Dashboard →
+                    </span>
+                </a>
+
+
+                <a
+                    href="add-product.html"
+                    class="admin-card"
+                >
+                    <div class="admin-icon">
+                        ➕
+                    </div>
+
+                    <h3>
+                        Add Product
+                    </h3>
+
+                    <p>
+                        Add a new product to
+                        Baby Kid.
+                    </p>
+
+                    <span>
+                        Add Product →
+                    </span>
+                </a>
+
+
+                <a
+                    href="index.html"
+                    class="admin-card"
+                >
+                    <div class="admin-icon">
+                        🌐
+                    </div>
+
+                    <h3>
+                        View Website
+                    </h3>
+
+                    <p>
+                        Open the Baby Kid
+                        customer website.
+                    </p>
+
+                    <span>
+                        View Website →
+                    </span>
+                </a>
+
+            </section>
+
+        </main>
+
+
+        <footer class="admin-footer">
+            © 2026 Baby Kid • Admin Panel
+        </footer>
+
+    </div>
+
+
+    <script type="module">
+
+        import { auth } from "./firebase.js";
+
+        import {
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+        const logoutBtn =
+            document.getElementById("logout-btn");
+
+
+        onAuthStateChanged(auth, (user) => {
+
+            if (!user) {
+                window.location.href = "login.html";
+            }
+
+        });
+
+
+        logoutBtn.addEventListener("click", async () => {
+
+            try {
+
+                await signOut(auth);
+
+                window.location.href = "login.html";
+
+            } catch (error) {
+
+                console.error(
+                    "Logout error:",
+                    error
+                );
+
+                alert(
+                    "Logout failed. Please try again."
+                );
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
