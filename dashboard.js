@@ -143,6 +143,13 @@ function loadProducts() {
 
             const products =
                 snapshot.val();
+const totalProducts =
+    document.getElementById("totalProducts");
+
+if (totalProducts) {
+    totalProducts.textContent =
+        Object.keys(products).length;
+}
 
 
             Object.entries(products)
