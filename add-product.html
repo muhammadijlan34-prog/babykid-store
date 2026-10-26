@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Product | Baby Kid</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="product.css">
+
+    <style>
+        .add-product-section {
+            padding: 40px 16px 70px;
+            background: #faf8ff;
+            min-height: 80vh;
+        }
+
+        .add-product-card {
+            max-width: 720px;
+            margin: auto;
+            padding: 28px;
+            background: #fff;
+            border: 1px solid #eee6f8;
+            border-radius: 20px;
+            box-shadow: 0 12px 35px rgba(40, 20, 70, .08);
+        }
+
+        .add-product-heading {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .add-product-heading h1 {
+            color: #24163b;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .add-product-heading p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .add-product-form {
+            display: grid;
+            gap: 17px;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 7px;
+        }
+
+        .form-group label {
+            color: #30243e;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd4e9;
+            border-radius: 10px;
+            background: #fff;
+            color: #292036;
+            font: inherit;
+            font-size: 14px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #7c3aed;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .subcategory-group {
+            display: none;
+            padding: 14px;
+            border: 1px solid #e8ddff;
+            border-radius: 12px;
+            background: #faf7ff;
+        }
+
+        .subcategory-group.visible {
+            display: grid;
+        }
+
+        .field-help {
+            color: #777;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .add-product-submit {
+            padding: 15px;
+            border: 0;
+            border-radius: 10px;
+            background: #6d28d9;
+            color: #fff;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .add-product-submit:hover {
+            background: #5b21b6;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #6d28d9;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        @media (max-width: 550px) {
+            .add-product-card {
+                padding: 20px 15px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .add-product-heading h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="add-product-section">
+        <div class="container">
+
+            <a href="index.html" class="back-link">
+                ← Back to Home
+            </a>
+
+            <section class="add-product-card">
+
+                <div class="add-product-heading">
+                    <h1>Add New Product</h1>
+                    <p>Add a product to the Baby Kid collection.</p>
+                </div>
+
+                <form id="add-product-form" class="add-product-form">
+
+                    <div class="form-group">
+                        <label for="product-name">Product Name</label>
+                        <input
+                            type="text"
+                            id="product-name"
+                            name="productName"
+                            placeholder="Enter product name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-category">Main Category</label>
+                        <select
+                            id="product-category"
+                            name="category"
+                            required
+                        >
+                            <option value="">Select Category</option>
+                            <option value="newborn">New Born</option>
+                            <option value="boys">Boys</option>
+                            <option value="girls">Girls</option>
+                            <option value="accessories">Accessories</option>
+                        </select>
+                    </div>
+
+                    <div
+                        class="form-group subcategory-group"
+                        id="newborn-subcategory-group"
+                    >
+                        <label for="product-subcategory">
+                            New Born Type
+                        </label>
+
+                        <select
+                            id="product-subcategory"
+                            name="subcategory"
+                        >
+                            <option value="">Select New Born Type</option>
+                            <option value="newborn-boys">Newborn Boys</option>
+                            <option value="newborn-girls">Newborn Girls</option>
+                        </select>
+
+                        <span class="field-help">
+                            Select whether this product is for a newborn boy
+                            or a newborn girl.
+                        </span>
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="product-price">Selling Price (₹)</label>
+                            <input
+                                type="number"
+                                id="product-price"
+                                name="price"
+                                min="0"
+                                step="1"
+                                placeholder="e.g. 499"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product-old-price">Old Price (₹)</label>
+                            <input
+                                type="number"
+                                id="product-old-price"
+                                name="oldPrice"
+                                min="0"
+                                step="1"
+                                placeholder="Optional"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-badge">Product Badge</label>
+                        <select id="product-badge" name="badge">
+                            <option value="">No Badge</option>
+                            <option value="New">New</option>
+                            <option value="Sale">Sale</option>
+                            <option value="Popular">Popular</option>
+                            <option value="Featured">Featured</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-image">Product Photos</label>
+                        <input
+                            type="file"
+                            id="product-image"
+                            name="image"
+                            accept="image/*"
+                            multiple
+                            required
+                        >
+                        <span class="field-help">
+                            Choose at least one product photo.
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-description">Description</label>
+                        <textarea
+                            id="product-description"
+                            name="description"
+                            placeholder="Enter product details"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="product-sizes">Available Sizes</label>
+                        <input
+                            type="text"
+                            id="product-sizes"
+                            name="sizes"
+                            placeholder="e.g. 0-3M, 3-6M, S, M, L"
+                        >
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="add-product-submit"
+                    >
+                        Add Product
+                    </button>
+
+                </form>
+
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const categorySelect =
+            document.getElementById("product-category");
+
+        const newbornGroup =
+            document.getElementById("newborn-subcategory-group");
+
+        const newbornSubcategory =
+            document.getElementById("product-subcategory");
+
+        function updateNewbornSubcategory() {
+            const isNewborn = categorySelect.value === "newborn";
+
+            newbornGroup.classList.toggle("visible", isNewborn);
+            newbornSubcategory.required = isNewborn;
+
+            if (!isNewborn) {
+                newbornSubcategory.value = "";
+            }
+        }
+
+        categorySelect.addEventListener(
+            "change",
+            updateNewbornSubcategory
+        );
+
+        updateNewbornSubcategory();
+    </script>
+
+    <script type="module" src="add-product.js"></script>
+
+</body>
+</html>
