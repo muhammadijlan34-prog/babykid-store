@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#6d28d9">
+
+    <title>Manage Gallery | Baby Kid</title>
+
+    <link rel="stylesheet" href="admin.css">
+
+    <style>
+        .gallery-admin-main {
+            max-width: 1050px;
+            margin: auto;
+            padding: 30px 16px 60px;
+        }
+
+        .gallery-admin-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .gallery-admin-top h2 {
+            margin: 0 0 6px;
+            color: #24163b;
+        }
+
+        .gallery-admin-top p {
+            margin: 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .gallery-back-link {
+            color: #6d28d9;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .gallery-form-card,
+        .gallery-list-card {
+            background: #fff;
+            border: 1px solid #eee6f8;
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 25px rgba(40, 20, 70, .06);
+        }
+
+        .gallery-form-card h3,
+        .gallery-list-card h3 {
+            margin: 0 0 20px;
+            color: #30243e;
+        }
+
+        .gallery-form {
+            display: grid;
+            gap: 16px;
+        }
+
+        .gallery-field {
+            display: grid;
+            gap: 7px;
+        }
+
+        .gallery-field label {
+            color: #30243e;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .gallery-field input,
+        .gallery-field select,
+        .gallery-field textarea {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd4e9;
+            border-radius: 10px;
+            background: #fff;
+            font: inherit;
+            font-size: 14px;
+        }
+
+        .gallery-field textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .gallery-field input:focus,
+        .gallery-field select:focus,
+        .gallery-field textarea:focus {
+            outline: none;
+            border-color: #8b5cf6;
+        }
+
+        .gallery-optional {
+            color: #8b5cf6;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .gallery-help {
+            color: #777;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .gallery-preview {
+            display: none;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid #eee;
+        }
+
+        .gallery-preview.visible {
+            display: block;
+        }
+
+        .gallery-form-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .gallery-submit-btn,
+        .gallery-cancel-btn {
+            padding: 13px 20px;
+            border: 0;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .gallery-submit-btn {
+            background: #6d28d9;
+            color: #fff;
+        }
+
+        .gallery-submit-btn:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        .gallery-cancel-btn {
+            background: #eee8f7;
+            color: #4c3470;
+            display: none;
+        }
+
+        .gallery-cancel-btn.visible {
+            display: inline-block;
+        }
+
+        .gallery-admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 18px;
+        }
+
+        .gallery-admin-item {
+            overflow: hidden;
+            border: 1px solid #eee6f8;
+            border-radius: 14px;
+            background: #fff;
+        }
+
+        .gallery-admin-item img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-admin-item-content {
+            padding: 13px;
+        }
+
+        .gallery-admin-item-content h4 {
+            margin: 0 0 7px;
+            color: #30243e;
+        }
+
+        .gallery-admin-item-content p {
+            margin: 0 0 10px;
+            color: #777;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .gallery-admin-item-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .gallery-admin-item-actions button {
+            flex: 1;
+            padding: 9px;
+            border: 0;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .gallery-edit-btn {
+            background: #eee8ff;
+            color: #6d28d9;
+        }
+
+        .gallery-delete-btn {
+            background: #fff0f0;
+            color: #d12d45;
+        }
+
+        .gallery-status {
+            padding: 12px;
+            border-radius: 9px;
+            background: #f5f0ff;
+            color: #59349b;
+            font-size: 13px;
+            display: none;
+        }
+
+        .gallery-status.visible {
+            display: block;
+        }
+
+        .gallery-empty {
+            color: #777;
+            text-align: center;
+            padding: 25px 10px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 550px) {
+            .gallery-form-card,
+            .gallery-list-card {
+                padding: 18px 14px;
+            }
+
+            .gallery-admin-item img {
+                height: 170px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="admin-header">
+        <div>
+            <h1>Baby Kid</h1>
+            <p>Gallery Management</p>
+        </div>
+
+        <a href="admin.html" class="gallery-back-link">
+            ← Admin Panel
+        </a>
+    </header>
+
+    <main class="gallery-admin-main">
+
+        <div class="gallery-admin-top">
+            <div>
+                <h2>Manage Gallery</h2>
+                <p>Upload and manage your gallery photos.</p>
+            </div>
+        </div>
+
+        <!-- UPLOAD FORM -->
+        <section class="gallery-form-card">
+
+            <h3 id="gallery-form-heading">
+                Upload New Photo
+            </h3>
+
+            <form
+                id="gallery-upload-form"
+                class="gallery-form"
+            >
+
+                <div class="gallery-field">
+                    <label for="gallery-image">
+                        Choose Photo <span style="color:red">*</span>
+                    </label>
+
+                    <input
+                        type="file"
+                        id="gallery-image"
+                        accept="image/*"
+                        required
+                    >
+
+                    <span class="gallery-help">
+                        Select one image to upload. Photo is required.
+                    </span>
+
+                    <img
+                        id="gallery-image-preview"
+                        class="gallery-preview"
+                        alt="Selected gallery photo preview"
+                    >
+                </div>
+
+                <div class="gallery-field">
+                    <label for="gallery-title">
+                        Title / Name
+                        <span class="gallery-optional">Optional</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="gallery-title"
+                        placeholder="Enter photo title"
+                    >
+                </div>
+
+                <div class="gallery-field">
+                    <label for="gallery-description">
+                        Description
+                        <span class="gallery-optional">Optional</span>
+                    </label>
+
+                    <textarea
+                        id="gallery-description"
+                        placeholder="Write a short description"
+                    ></textarea>
+                </div>
+
+                <div class="gallery-field">
+                    <label for="gallery-rating">
+                        Rating
+                        <span class="gallery-optional">Optional</span>
+                    </label>
+
+                    <select id="gallery-rating">
+                        <option value="">No Rating</option>
+                        <option value="1">1 Star</option>
+                        <option value="2">2 Stars</option>
+                        <option value="3">3 Stars</option>
+                        <option value="4">4 Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                </div>
+
+                <div class="gallery-field">
+                    <label for="gallery-date">
+                        Date / Event
+                        <span class="gallery-optional">Optional</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="gallery-date"
+                        placeholder="e.g. Birthday, Eid, Photoshoot"
+                    >
+                </div>
+
+                <div class="gallery-field">
+                    <label for="gallery-category">
+                        Category
+                        <span class="gallery-optional">Optional</span>
+                    </label>
+
+                    <select id="gallery-category">
+                        <option value="">No Category</option>
+                        <option value="New Born">New Born</option>
+                        <option value="Boys">Boys</option>
+                        <option value="Girls">Girls</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Customer Moments">Customer Moments</option>
+                        <option value="Events">Events</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div
+                    id="gallery-status"
+                    class="gallery-status"
+                    role="status"
+                ></div>
+
+                <div class="gallery-form-actions">
+
+                    <button
+                        type="submit"
+                        id="gallery-submit-btn"
+                        class="gallery-submit-btn"
+                    >
+                        Upload to Gallery
+                    </button>
+
+                    <button
+                        type="button"
+                        id="gallery-cancel-btn"
+                        class="gallery-cancel-btn"
+                    >
+                        Cancel Edit
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- EXISTING GALLERY PHOTOS -->
+        <section class="gallery-list-card">
+
+            <h3>Gallery Photos</h3>
+
+            <div
+                id="gallery-admin-list"
+                class="gallery-admin-grid"
+            >
+                <p class="gallery-empty">
+                    Loading gallery photos...
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="gallery-admin.js"></script>
+
+</body>
+</html>
