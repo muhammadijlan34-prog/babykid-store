@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Explore Baby Kid fashion moments and gallery."
+    >
+
+    <meta name="theme-color" content="#6d28d9">
+
+    <title>Gallery | Baby Kid</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .gallery-section {
+            min-height: 70vh;
+            padding: 55px 16px 75px;
+            background: #faf8ff;
+        }
+
+        .gallery-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .gallery-heading span {
+            color: #8b5cf6;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .gallery-heading h1 {
+            color: #24163b;
+            font-size: clamp(28px, 5vw, 40px);
+            margin: 10px 0;
+        }
+
+        .gallery-heading p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fill,
+                minmax(220px, 1fr)
+            );
+            gap: 20px;
+        }
+
+        .gallery-card {
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #eee6f8;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(40, 20, 70, .06);
+        }
+
+        .gallery-card-image {
+            width: 100%;
+            height: 245px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+        }
+
+        .gallery-card-content {
+            padding: 15px;
+        }
+
+        .gallery-card-content h3 {
+            color: #30243e;
+            font-size: 17px;
+            margin: 0 0 8px;
+        }
+
+        .gallery-card-content p {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0 0 8px;
+        }
+
+        .gallery-card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-top: 10px;
+        }
+
+        .gallery-card-meta span {
+            background: #f2ebff;
+            color: #7041b5;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+        }
+
+        .gallery-message {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: #777;
+            padding: 35px 10px;
+        }
+
+        .gallery-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(15, 10, 25, .92);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .gallery-lightbox.visible {
+            display: flex;
+        }
+
+        .gallery-lightbox img {
+            max-width: 95%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .gallery-lightbox-close {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            border: 0;
+            background: transparent;
+            color: #fff;
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 550px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .gallery-card-image {
+                height: 175px;
+            }
+
+            .gallery-card-content {
+                padding: 11px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a href="index.html" class="site-logo" aria-label="Baby Kid Home">
+                <img src="assets/logo.png" alt="Baby Kid Logo">
+            </a>
+
+            <nav class="desktop-nav" aria-label="Main navigation">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#categories">Categories</a>
+                <a href="index.html#products">Products</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <a
+                    href="https://wa.me/919995953131"
+                    class="header-whatsapp"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    WhatsApp
+                </a>
+
+                <button
+                    type="button"
+                    class="menu-btn"
+                    id="menu-btn"
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="index.html#home">Home</a>
+            <a href="index.html#categories">Categories</a>
+            <a href="index.html#products">Products</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+
+            <a
+                href="https://wa.me/919995953131"
+                target="_blank"
+                rel="noopener"
+            >
+                WhatsApp
+            </a>
+        </nav>
+
+    </header>
+
+
+    <!-- GALLERY -->
+    <main>
+
+        <section class="gallery-section">
+
+            <div class="container">
+
+                <div class="gallery-heading">
+
+                    <span>Baby Kid Moments</span>
+
+                    <h1>Our Gallery</h1>
+
+                    <p>
+                        Explore our beautiful fashion moments
+                        and latest collections.
+                    </p>
+
+                </div>
+
+                <div
+                    class="gallery-grid"
+                    id="gallery-grid"
+                    aria-live="polite"
+                >
+
+                    <!-- OLD PHOTO FALLBACK -->
+                    <article class="gallery-card" id="gallery-old-photo">
+
+                        <img
+                            src="assets/gallery/child-01.jpg"
+                            alt="Baby Kid Gallery"
+                            class="gallery-card-image"
+                            loading="lazy"
+                        >
+
+                    </article>
+
+                    <p class="gallery-message">
+                        Loading gallery photos...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- IMAGE LIGHTBOX -->
+    <div
+        class="gallery-lightbox"
+        id="gallery-lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Gallery image preview"
+    >
+
+        <button
+            type="button"
+            class="gallery-lightbox-close"
+            id="gallery-lightbox-close"
+            aria-label="Close image"
+        >
+            ×
+        </button>
+
+        <img
+            src=""
+            alt="Gallery enlarged image"
+            id="gallery-lightbox-image"
+        >
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+
+                    <img
+                        src="assets/logo.png"
+                        alt="Baby Kid Logo"
+                        class="footer-logo"
+                    >
+
+                    <h3>Baby Kid</h3>
+
+                    <p>
+                        Trending Korean-inspired and international
+                        kidswear for little fashion lovers.
+                    </p>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h3>Quick Links</h3>
+
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#categories">Categories</a>
+                    <a href="index.html#products">Products</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="index.html#contact">Contact</a>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h3>Categories</h3>
+
+                    <a href="product.html?category=newborn">New Born</a>
+                    <a href="product.html?category=boys">Boys</a>
+                    <a href="product.html?category=girls">Girls</a>
+                    <a href="product.html?category=accessories">Accessories</a>
+
+                </div>
+
+                <div class="footer-column">
+
+                    <h3>Contact</h3>
+
+                    <a href="tel:+919995953131">
+                        📞 99959 53131
+                    </a>
+
+                    <a
+                        href="https://wa.me/919995953131"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        💬 WhatsApp
+                    </a>
+
+                    <a href="mailto:babykid3131@gmail.com">
+                        📧 Email
+                    </a>
+
+                    <a
+                        href="https://www.instagram.com/baby_kid_official/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        📷 Instagram
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="footer-delivery">
+                🚚 All Kerala Delivery • Delivery Charge ₹70
+            </div>
+
+            <div class="footer-bottom">
+
+                <p>© 2026 Baby Kid. All Rights Reserved.</p>
+
+                <p>
+                    Designed & Developed by
+                    <strong>MIP</strong>
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <button
+        type="button"
+        id="top-btn"
+        class="top-btn"
+        aria-label="Back to top"
+    >
+        ↑
+    </button>
+
+
+    <script src="script.js"></script>
+
+    <script type="module" src="gallery.js"></script>
+
+</body>
+</html>
